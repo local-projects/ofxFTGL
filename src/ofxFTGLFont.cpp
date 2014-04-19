@@ -89,7 +89,10 @@ void ofxFTGLFont::setSize(int size){
 }
 
 int ofxFTGLFont::getSize(){
-	return font->FaceSize();
+    if(loaded){
+		return font->FaceSize();
+	}
+	return 0;
 }
 
 void ofxFTGLFont::setTracking(float tracking)
@@ -151,18 +154,22 @@ ofRectangle ofxFTGLFont::getStringBoundingBox(wstring s, float x, float y){
 }
 
 void ofxFTGLFont::drawString(string s, float x, float y){
-    glPushMatrix();
-    glTranslatef(x, y, 0);
-    glScalef(1,-1,1);
+	if(loaded){
+		glPushMatrix();
+		glTranslatef(x, y, 0);
+		glScalef(1,-1,1);
 
-    font->Render(s.c_str(), -1, FTPoint(), trackingPoint);
-    glPopMatrix();
+		font->Render(s.c_str(), -1, FTPoint(), trackingPoint);
+		glPopMatrix();
+	}
 }
 
 void ofxFTGLFont::drawString(wstring s, float x, float y){
-    glPushMatrix();
-    glTranslatef(x, y, 0);
-    glScalef(1,-1,1);
-    font->Render((wchar_t*)s.c_str(), -1, FTPoint(), trackingPoint);
-    glPopMatrix();
+	if(loaded){
+		glPushMatrix();
+		glTranslatef(x, y, 0);
+		glScalef(1,-1,1);
+		font->Render((wchar_t*)s.c_str(), -1, FTPoint(), trackingPoint);
+		glPopMatrix();
+	}
 }
