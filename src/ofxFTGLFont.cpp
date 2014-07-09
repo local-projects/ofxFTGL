@@ -25,8 +25,6 @@ bool ofxFTGLFont::loadFont(string filename, float fontsize, float depth, bool bU
 {
 	unload();
     
-    fontsize *= 2;
-    
     if (depth != 0) {
         font = new FTExtrudeFont(ofToDataPath(filename).c_str());
         font->Depth(depth);
