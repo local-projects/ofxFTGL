@@ -21,7 +21,7 @@ void ofxFTGLFont::unload()
     loaded = false;
 }
 
-bool ofxFTGLFont::loadFont(string filename, float fontsize, float depth, bool bUsePolygons)
+bool ofxFTGLFont::loadFont(const string& filename, float fontsize, float depth, bool bUsePolygons)
 {
 	unload();
     
@@ -58,7 +58,7 @@ float ofxFTGLFont::getSpaceSize(){
 	return stringWidth(" ");
 }
 
-float ofxFTGLFont::stringWidth(string c)
+float ofxFTGLFont::stringWidth(const string& c)
 {
     if (c.compare(" ") == 0) {
         // FTGL won't measure a space width properly, so we
@@ -71,7 +71,7 @@ float ofxFTGLFont::stringWidth(string c)
     }
 }
 
-float ofxFTGLFont::stringHeight(string c) {
+float ofxFTGLFont::stringHeight(const string& c) {
     ofRectangle rect = getStringBoundingBox(c, 0,0);
     return rect.height;
 }
@@ -135,7 +135,7 @@ float ofxFTGLFont::getXHeight() const
     return 0;
 }
 
-ofRectangle ofxFTGLFont::getStringBoundingBox(string s, float x, float y){
+ofRectangle ofxFTGLFont::getStringBoundingBox(const string& s, float x, float y){
     if(loaded){
     	FTBBox bbox = font->BBox(s.c_str(), -1, FTPoint(), trackingPoint);
 	    return ofRectangle(x + bbox.Lower().Xf(), y + bbox.Lower().Yf(), bbox.Upper().Xf(), bbox.Upper().Yf());
@@ -143,7 +143,7 @@ ofRectangle ofxFTGLFont::getStringBoundingBox(string s, float x, float y){
 	return ofRectangle();
 }
 
-ofRectangle ofxFTGLFont::getStringBoundingBox(wstring s, float x, float y){
+ofRectangle ofxFTGLFont::getStringBoundingBox(const wstring& s, float x, float y){
     if(loaded){
     	FTBBox bbox = font->BBox((wchar_t*)s.c_str(), -1, FTPoint(), trackingPoint);
 	    return ofRectangle(x + bbox.Lower().Xf(), y + bbox.Lower().Yf(), bbox.Upper().Xf(), bbox.Upper().Yf());
@@ -151,7 +151,7 @@ ofRectangle ofxFTGLFont::getStringBoundingBox(wstring s, float x, float y){
 	return ofRectangle();
 }
 
-void ofxFTGLFont::drawString(string s, float x, float y){
+void ofxFTGLFont::drawString(const string& s, float x, float y){
 	if(loaded){
 		glPushMatrix();
 		glTranslatef(x, y, 0);
@@ -162,7 +162,7 @@ void ofxFTGLFont::drawString(string s, float x, float y){
 	}
 }
 
-void ofxFTGLFont::drawString(wstring s, float x, float y){
+void ofxFTGLFont::drawString(const wstring& s, float x, float y){
 	if(loaded){
 		glPushMatrix();
 		glTranslatef(x, y, 0);
