@@ -153,21 +153,20 @@ ofRectangle ofxFTGLFont::getStringBoundingBox(const wstring& s, float x, float y
 
 void ofxFTGLFont::drawString(const string& s, float x, float y){
 	if(loaded){
-		glPushMatrix();
-		glTranslatef(x, y, 0);
-		glScalef(1,-1,1);
-
-		font->Render(s.c_str(), -1, FTPoint(), trackingPoint);
-		glPopMatrix();
+		ofPushMatrix();
+		ofTranslate(x, y, 0);
+		ofScale(1, -1, 1);
+		font->Render(s.c_str(), s.size(), FTPoint(), trackingPoint);
+		ofPopMatrix();
 	}
 }
 
 void ofxFTGLFont::drawString(const wstring& s, float x, float y){
 	if(loaded){
-		glPushMatrix();
-		glTranslatef(x, y, 0);
-		glScalef(1,-1,1);
+		ofPushMatrix();
+		ofTranslate(x, y, 0);
+		ofScale(1, -1, 1);
 		font->Render((wchar_t*)s.c_str(), -1, FTPoint(), trackingPoint);
-		glPopMatrix();
+		ofPopMatrix();
 	}
 }

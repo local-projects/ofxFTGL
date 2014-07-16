@@ -83,18 +83,18 @@ ofRectangle ofxFTGLSimpleLayout::getStringBoundingBox(wstring s, float x, float 
 
 void ofxFTGLSimpleLayout::drawString(string s, float x, float y)
 {
-    glPushMatrix();
-    glTranslatef(x, y, 0);
-    glScalef(1,-1,1);
+    ofPushMatrix();
+    ofTranslate(x, y, 0);
+    ofScale(1, -1 ,1);
     layout->Render(s.c_str());
-    glPopMatrix();
+    ofPopMatrix();
 }
 
 void ofxFTGLSimpleLayout::drawString(wstring s, float x, float y)
 {
-    glPushMatrix();
-    glTranslatef(x, y, 0);
-    glScalef(1,-1,1);
+    ofPushMatrix();
+    ofTranslate(x, y, 0);
+    ofScale (1, -1, 1);
     layout->Render((wchar_t*)s.c_str());
-    glPopMatrix();
+    ofPopMatrix();
 }
