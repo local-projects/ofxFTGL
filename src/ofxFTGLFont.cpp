@@ -156,7 +156,7 @@ void ofxFTGLFont::drawString(const string& s, float x, float y){
 		ofPushMatrix();
 		ofTranslate(x, y, 0);
 		ofScale(1, -1, 1);
-		font->Render(s.c_str(), s.size(), FTPoint(), trackingPoint);
+		font->Render(s.c_str(), -1, FTPoint(), trackingPoint);
 		ofPopMatrix();
 	}
 }
