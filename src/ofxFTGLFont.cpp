@@ -23,6 +23,11 @@ void ofxFTGLFont::unload()
 
 bool ofxFTGLFont::loadFont(const string& filename, float fontsize, float depth, bool bUsePolygons)
 {
+    return load(filename, fontsize, depth, bUsePolygons);
+}
+
+bool ofxFTGLFont::load(const string& filename, float fontsize, float depth, bool bUsePolygons)
+{
 	unload();
     
     if (depth != 0) {

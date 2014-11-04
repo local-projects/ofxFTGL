@@ -10,7 +10,8 @@ class ofxFTGLFont
         ~ofxFTGLFont();
 
         virtual void unload();
-        virtual bool loadFont(const string& filename, float fontsize, float depth = 0, bool bUsePolygons = false);
+        virtual bool load(const string& filename, float fontsize, float depth = 0, bool bUsePolygons = false);
+        OF_DEPRECATED_MSG("Use load instead", virtual bool loadFont(const string& filename, float fontsize, float depth = 0, bool bUsePolygons = false));
         bool isLoaded();
 
         void setSize(int size);

@@ -19,7 +19,8 @@ class ofxFTGLSimpleLayout
         ~ofxFTGLSimpleLayout();
 
         void unload();
-        bool loadFont(string filename, float fontsize = 10, float depth = 0, bool bUsePolygons = false);
+        bool load(string filename, float fontsize = 10, float depth = 0, bool bUsePolygons = false);
+        OF_DEPRECATED_MSG("Use load instead", bool loadFont(string filename, float fontsize = 10, float depth = 0, bool bUsePolygons = false));
 
         ofRectangle getStringBoundingBox(wstring s, float x, float y);
         ofRectangle getStringBoundingBox(string s, float x, float y);

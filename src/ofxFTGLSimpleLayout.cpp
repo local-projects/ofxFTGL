@@ -23,7 +23,12 @@ void ofxFTGLSimpleLayout::unload()
 
 bool ofxFTGLSimpleLayout::loadFont(string filename, float fontsize, float depth, bool bUsePolygons)
 {
-    if (ofxFTGLFont::loadFont(filename, fontsize, depth, bUsePolygons)) {
+    return load(filename, fontsize, depth, bUsePolygons);
+}
+
+bool ofxFTGLSimpleLayout::load(string filename, float fontsize, float depth, bool bUsePolygons)
+{
+    if (ofxFTGLFont::load(filename, fontsize, depth, bUsePolygons)) {
         layout = new FTSimpleLayout();
         layout->SetFont(font);
     
